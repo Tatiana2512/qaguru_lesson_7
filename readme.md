@@ -1,3 +1,3 @@
-#QA.GURU
-##Lesson 7. Allure Reports
+# QA.GURU
+## Lesson 7. Allure Reports
 

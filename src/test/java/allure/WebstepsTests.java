@@ -1,17 +1,14 @@
-package AllureTests;
+package allure;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.IssuesPage;
-import pages.RepoListPage;
-import pages.RepoSelenidePage;
-import pages.StartPage;
 
-public class TestWebsteps {
+public class WebstepsTests {
 
     @BeforeAll
     static void setUp() {
@@ -20,19 +17,24 @@ public class TestWebsteps {
 
 
 
-    String query = "selenide/selenide";
-    int expectNum = 25;
+    private final String REPO = "selenide/selenide";
+    private final int NUM = 25;
 
     @Test
+    @DisplayName("Test with @Step annotations")
+    @Owner("Tatiana Belotserkovskaia")
+    @Severity(SeverityLevel.BLOCKER)
+    @Feature("Issues in repository")
+    @Story("Looking up for issues in repository")
     public void webStepsTest() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
         steps.openStartPage();
-        steps.openRepositoryPage(query);
-        steps.clickRepositoryLink(query);
+        steps.openRepositoryPage(REPO);
+        steps.clickRepositoryLink(REPO);
         steps.clickIssuesTab();
-        steps.countIssues(expectNum);
+        steps.countIssues(NUM);
 
     }
 

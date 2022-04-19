@@ -1,0 +1,11 @@
+Header: Check for Issues tab in specified Github repository
+Test Data: ["selenide/selenide", 25]
+
+Preconditions: open page https://github.com/
+
+Steps:
+ - search for specified repository
+ - check if Issues tab exists
+ - count issues items in this repository
+
+Expected Result: Issues tab exist, list of issues consists of 25 items
